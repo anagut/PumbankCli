@@ -1,0 +1,12 @@
+<section>
+  
+  <input type="text" [(ngModel)]="valor">
+  
+
+  <ul *ngFor="let aUser of filtraPorNombre()">
+    <li>{{aUser.uid}} - {{aUser.nombre}} - {{aUser.email}} - {{aUser.edad}} </li>
+  </ul>
+
+  <p><a [routerLink]="['new']">Nuevo Usuario</a></p>
+
+</section>

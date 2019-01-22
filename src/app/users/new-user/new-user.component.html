@@ -1,0 +1,14 @@
+<section>
+  <h1>Nuevo usuario</h1>
+  <form #userform="ngForm" (ngSubmit)="addUser()">
+    <div>
+      <input [(ngModel)]="nuevoUsuario.nombre" name="nombre" type="text" placeholder="Nombre" required>
+    </div>
+    <div><input [(ngModel)]="nuevoUsuario.email" name="email" type="email" placeholder="Email" required></div>
+    <div><input [(ngModel)]="nuevoUsuario.edad" name="edad" type="number" min="14" placeholder="Edad" required></div>
+    <div><button [disabled]="!userform.valid">Crear</button></div>
+  </form>
+
+  <pre>{{nuevoUsuario|json}}</pre>
+
+</section>

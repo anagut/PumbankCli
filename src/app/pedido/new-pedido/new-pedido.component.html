@@ -1,0 +1,15 @@
+<section>
+    <h1>Nuevo Pedido</h1>
+    <form #userform="ngForm" (ngSubmit)="addPedido()">
+      <div>
+        <input [(ngModel)]="nuevoPedido.descripcion" name="descripcion" type="text"placeholder="Descripcion" required>
+      </div>
+      <div>
+        <input [(ngModel)]="nuevoPedido.monto" name="monto" type="text"placeholder="Monto" required>
+      </div>
+     
+      <div><button [disabled]="!userform.valid">Crear</button></div>
+    </form>
+  
+    <pre>{{nuevoPedido|json}}</pre>
+  </section>

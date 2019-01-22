@@ -1,0 +1,10 @@
+<section>
+  
+    <ul *ngFor="let aPed of pedidos">
+      <li>{{aPed.pid}} - {{aPed.descripcion}} - {{aPed.monto}}€ </li>
+    </ul>
+  
+    <p><a [routerLink]="['new']">Nuevo Pedido</a></p>
+  
+  </section>
+  

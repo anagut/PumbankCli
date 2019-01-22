@@ -1,0 +1,16 @@
+<section>
+
+  <h1>Acceso</h1>
+
+  <!-- form>(div>input)*2+(div>button) -->
+  <form #loginform="ngForm" (ngSubmit)="acceder()">
+    <div>
+      <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+    </div>
+    <div>
+      <input type="password" placeholder="Contraseña" name="pass" [(ngModel)]="user.pass" required>
+    </div>
+    <div><button [disabled]="!loginform.valid">Acceder</button></div>
+  </form>
+
+</section>
