@@ -13,11 +13,8 @@ import { NewPedidoComponent } from './pedido/new-pedido/new-pedido.component';
 import { LoginComponent } from './login/login.component';
 import { PadreComponent } from './padre/padre.component';
 import { HijoComponent } from './hijo/hijo.component';
-import { PagaComponent } from './paga/paga.component';
-import { TransferenciaComponent } from './transferencia/transferencia.component';
-import { CongelarComponent } from './congelar/congelar.component';
 import { AddHijoComponent } from './padre/add-hijo/add-hijo.component';
-import { DetalleHijoComponent } from './padre/detalle-hijo/detalle-hijo.component';
+
 
 @NgModule({
   declarations: [
@@ -30,11 +27,9 @@ import { DetalleHijoComponent } from './padre/detalle-hijo/detalle-hijo.componen
     LoginComponent,
     PadreComponent,
     HijoComponent,
-    PagaComponent,
-    TransferenciaComponent,
-    CongelarComponent,
+
     AddHijoComponent,
-    DetalleHijoComponent
+
   ],
   imports: [
     FormsModule,
