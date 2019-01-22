@@ -14,6 +14,10 @@ import { LoginComponent } from './login/login.component';
 import { PadreComponent } from './padre/padre.component';
 import { HijoComponent } from './hijo/hijo.component';
 import { AddHijoComponent } from './padre/add-hijo/add-hijo.component';
+import { PagaComponent } from './hijo/paga/paga.component';
+import { CongelarComponent } from './hijo/congelar/congelar.component';
+import { TransferenciaComponent } from './hijo/transferencia/transferencia.component';
+
 
 
 @NgModule({
@@ -27,8 +31,11 @@ import { AddHijoComponent } from './padre/add-hijo/add-hijo.component';
     LoginComponent,
     PadreComponent,
     HijoComponent,
-
     AddHijoComponent,
+    PagaComponent,
+    CongelarComponent,
+    TransferenciaComponent,
+
 
   ],
   imports: [

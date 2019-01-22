@@ -25,6 +25,8 @@ const routes: Routes = [
   {path:"padre/:hid/paga", component:PagaComponent, pathMatch:"full"},
   {path:"padre/:hid/transferencia", component:TransferenciaComponent, pathMatch:"full"},
   {path:"padre/:hid/congelar", component:TransferenciaComponent, pathMatch:"full"},
+
+  {path:"paga", component:PagaComponent, pathMatch:"full"},
 ];
 
 @NgModule({
