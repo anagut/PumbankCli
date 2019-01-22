@@ -1,3 +1,12 @@
-<p>
-  padre works!
-</p>
+<section>
+  
+  <input type="text" [(ngModel)]="valor">
+  
+
+  <ul *ngFor="let aHijo of filtraPorHid()">
+    <li>{{aHijo.hid}} - {{aHijo.nombre}} - {{aHijo.apellidos}} - {{aHijo.fechanacimiento}} {{aHijo.saldo}}</li>
+  </ul>
+
+  <p><a [routerLink]="['new']">Añadir Hijo</a></p>
+
+</section>
