@@ -8,8 +8,8 @@ export class Padre {
         private _tarjetacredito: number,
         private _cvv: number,
         private _password: string,
-        private _mescaducidad: number,
-        private _yearcaducidad: number,
+        private _expiremonth: number,
+        private _expireyear: number,
         private _hijos: string[]) {
     }
 
@@ -21,8 +21,8 @@ export class Padre {
     get tarjetacredito() {return this._tarjetacredito;}
     get cvv() {return this._cvv;}
     get password() {return this._password;}
-    get mescaducidad() {return this._mescaducidad;}
-    get yearcaducidad() {return this._yearcaducidad;}
+    get expiremonth() {return this._expiremonth;}
+    get expireyear() {return this._expireyear;}
     get hijos() {return this._hijos;}
 
     set pid(pid) {this._pid = pid;}
@@ -33,8 +33,8 @@ export class Padre {
     set tarjetacredito(tarjetacredito) {this._tarjetacredito = tarjetacredito;}
     set cvv(cvv) {this._cvv = cvv;}
     set password(password) {this._password = password;}
-    set mescaducidad(mescaducidad) {this._mescaducidad = mescaducidad;}
-    set yearcaducidad(yearcaducidad) {this._yearcaducidad = yearcaducidad;}
+    set expiremonth(expiremonth) {this._expiremonth = expiremonth;}
+    set expireyear(expireyear) {this._expireyear = expireyear;}
     set hijos(hijos) {this._hijos = hijos;}
 
 }

@@ -6,8 +6,7 @@ export class Hijo {
         private _fechanacimiento: string,
         private _saldo: number,
         private _email: string,
-        private _password: string,
-        private _padre: number){
+        private _password: string,){
     }
 
     get hid() {return this._hid;}
@@ -17,7 +16,6 @@ export class Hijo {
     get saldo() {return this._saldo;}
     get email() {return this._email;}
     get password() {return this._password;}
-    get padre() {return this._padre;}
 
     set hid(hid) {this._hid = hid;}
     set nombre(nombre) {this._nombre = nombre;}
@@ -26,7 +24,6 @@ export class Hijo {
     set saldo(saldo) {this._saldo = saldo;}
     set email(email) {this._email = email;}
     set password(password) {this._password = password;}
-    set padre(padre) {this._padre = padre;}
 
 }
 
