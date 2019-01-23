@@ -7,6 +7,31 @@
     <li>{{aHijo.hid}} - {{aHijo.nombre}} - {{aHijo.apellidos}} - {{aHijo.fechanacimiento}} {{aHijo.saldo}}</li>
   </ul>
 
+  <ul id="list">
+    <ul *ngFor="let unHijo of hijos">
+    <c:forEach var="unHijo" items="{{unP.hijos}}">
+      <li>
+        <div id="nombre_hijo">{{unHijo.nombre}}</div>
+        <div id="saldo_hijo">Saldo: {{unHijo.saldo}} €</div>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <div id="yellow" type="button" class="btn btn-group" role="group"
+            aria-label="Basic example">
+            <a [routerLink]="['./paga?hid={{unHijo.hid}}&&pid={{unP.pid}}']">Paga</a>
+          </div>
+          <div id="green" type="button" class="btn btn-group" role="group"
+            aria-label="Basic example">
+            <a [routerLink]="['./transferencia?hid={{unHijo.hid}}&&pid={{unP.pid}}']">Transferencia</a>
+          </div>
+          <div id="blue" type="button" class="btn btn-group" role="group"
+            aria-label="Basic example">
+            <a [routerLink]="['./congelar?hid={{unHijo.hid}}&&pid={{unP.pid}}']">Congelar</a>
+          </div>
+        </div>
+      </li>
+    </c:forEach>
+  </ul>
+
   <p><a [routerLink]="['new']">Añadir Hijo</a></p>
 
 </section>
