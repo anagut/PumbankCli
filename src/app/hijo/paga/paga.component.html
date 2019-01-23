@@ -1,1 +1,70 @@
-<p>LO DE LA PAGA</p>
+<section>
+    <h2>Paga</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div>
+            <label for="usuario">Usuario:</label>
+            <input type="text" name="usuario" id="usuario" [(ngModel)]="_hijo.nombre" required readonly>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="cantidad" name="cantidad" id="cantidad" [(ngModel)]="_paga.cantidad"
+                required>
+        </div>
+        <div>
+            <label for="frecuencia">Frecuencia</label>
+            <!-- <div>
+                <select name="frecuencia" id="frecuencia" required>
+                    <option [ngValue]="0" disabled>Elegir frecuencia</option>
+                    <option [ngValue]="7">Cada semana</option>
+                    <option [ngValue]="15">Cada 15 días</option>
+                    <option [ngValue]="30">Cada mes</option>
+                    <option [ngValue]="1">Cada día</option>
+                </select>
+            </div> -->
+            <div *ngIf="7 == _paga.frecuencia">
+                <select name="frecuencia" id="frecuencia" required>
+                    <option [ngValue]="0" disabled>Elegir frecuencia</option>
+                    <option [ngValue]="7" selected>Cada semana</option>
+                    <option [ngValue]="15">Cada 15 días</option>
+                    <option [ngValue]="30">Cada mes</option>
+                    <option [ngValue]="1">Cada día</option>
+                </select>
+            </div>
+            <div *ngIf="_paga.frecuencia==15">
+                <select name="frecuencia" id="frecuencia" required>
+                    <option [ngValue]="0" disabled>Elegir frecuencia</option>
+                    <option [ngValue]="7">Cada semana</option>
+                    <option [ngValue]="15" selected>Cada 15 días</option>
+                    <option [ngValue]="30">Cada mes</option>
+                    <option [ngValue]="1">Cada día</option>
+                </select>
+            </div>
+            <div *ngIf="_paga.frecuencia==30">
+                <select name="frecuencia" id="frecuencia" required>
+                    <option [ngValue]="0" disabled>Elegir frecuencia</option>
+                    <option [ngValue]="7">Cada semana</option>
+                    <option [ngValue]="15">Cada 15 días</option>
+                    <option [ngValue]="30" selected>Cada mes</option>
+                    <option [ngValue]="1">Cada día</option>
+                </select>
+            </div>
+            <div *ngIf="_paga.frecuencia==1">
+                <select name="frecuencia" id="frecuencia" required>
+                    <option [ngValue]="0" disabled>Elegir frecuencia</option>
+                    <option [ngValue]="7">Cada semana</option>
+                    <option [ngValue]="15">Cada 15 días</option>
+                    <option [ngValue]="30">Cada mes</option>
+                    <option [ngValue]="1" selected>Cada día</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <div><button class="btn" [disabled]="!form.valid">Aceptar</button></div>
+            <div><button class="btn">Cancelar</button></div>
+        </div>
+
+
+    </form>
+
+</section>

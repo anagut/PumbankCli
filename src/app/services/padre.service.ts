@@ -5,17 +5,17 @@ import { HttpClient } from '@angular/common/http';
 import { AddHijoComponent } from '../padre/add-hijo/add-hijo.component';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PadreService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class PadreService {
 
-  API_URL: "http://localhost:8080/Pumbank/api/padre"
+//   API_URL: "http://localhost:8080/Pumbank/api/padre"
 
-  constructor(private _http:HttpClient) { }
+//   constructor(private _http:HttpClient) { }
 
-  getHijosFromAPI():Observable<Hijo[]>{
-    return this._http.get<Hijo[]>(this.API_URL);
+//   getHijosFromAPI():Observable<Hijo[]>{
+//     return this._http.get<Hijo[]>(this.API_URL);
 
 //   addHijo(nuevoH: Hijo):Boolean{
 //     nuevoH.hid = (new Number());
