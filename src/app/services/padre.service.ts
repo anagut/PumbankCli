@@ -32,26 +32,5 @@ export class PadreService {
   //     this._http.put(nuevoH);
   //     return true;
 
-  //   }
-
-<<<<<<< HEAD
-  //   addHijoAPI(nuevoHijo:Hijo):Observable<Hijo>{
-  //     const options={
-  //       headers:{
-  //         "Content-Type":"application/json"
-  //       }
-  //     };
-
-  //     const hijoAEnviar={
-  //       hid:0,
-  //       nombre: nuevoHijo.nombre,
-
-  //     }
-
-  //     return this._http.post<Pedido>(this.API_URL,pedidoAEnviar,options);
+  //   
 }
-=======
-//     return this._http.post<Pedido>(this.API_URL,pedidoAEnviar,options);
-//   }
-}}
->>>>>>> f6bc89277dab58c1d36f716f471d184a45e7d89b

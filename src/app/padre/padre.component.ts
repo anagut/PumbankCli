@@ -10,28 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PadreComponent implements OnInit {
 
-<<<<<<< HEAD
-  // hijos:Hijo[] = [
-  //   new Hijo(1, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),
-  //   new Hijo(2, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),];
-  // valor:string='';
-
-  // constructor(private _hijoService:HijoService) { }
-
-  ngOnInit() {
-  //   this.hijos=this._hijoService;
-  // }
-
-  // filtraPorNombre(){
-  //   if(this.usuarios){
-  //     return this.usuarios.filter(unU=>{
-  //       return (unU.nombre.indexOf(this.valor)>=0);
-  //     });
-  //   }else{
-  //     return this.usuarios;
-  //   }
-  // }
-=======
   _hijos: Hijo[];
   pid: number = 0;
 
@@ -46,12 +24,10 @@ export class PadreComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this._padreService.getHijosByPidFromAPI(1).subscribe(hijosApi => {
+    this._padreService.getHijosByPidFromAPI(2).subscribe(hijosApi => {
       console.log('hijosApi:',hijosApi);
       this._hijos=hijosApi.hijos;
     });
   }
->>>>>>> 43887dc5574c791e0a64e20e498b134069375877
 
-}
 }

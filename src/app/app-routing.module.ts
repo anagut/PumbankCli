@@ -5,7 +5,7 @@ import { PadreComponent } from './padre/padre.component';
 import { HijoComponent } from './hijo/hijo.component';
 import { PagaComponent } from './hijo/paga/paga.component';
 import { TransferenciaComponent } from './hijo/transferencia/transferencia.component';
-import { CongelarComponent } from './hijo/congelar/congelar.component';
+// import { CongelarComponent } from './hijo/congelar/congelar.component';
 import { AddHijoComponent } from './padre/add-hijo/add-hijo.component';
 
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:"padre/:pid/add-hijo", component:AddHijoComponent, pathMatch:"full"},
   {path:"padre/:pid/:hid/paga", component:PagaComponent, pathMatch:"full"},
   {path:"padre/:pid/:hid/transferencia", component:TransferenciaComponent, pathMatch:"full"},
-  {path:"padre/:pid/:hid/congelar", component:CongelarComponent, pathMatch:"full"},
+  // {path:"padre/:pid/:hid/congelar", component:CongelarComponent, pathMatch:"full"},
 
   {path:"paga", component:PagaComponent, pathMatch:"full"},
 ];
