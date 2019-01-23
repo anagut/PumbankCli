@@ -34,6 +34,7 @@ export class PadreService {
 
   //   }
 
+<<<<<<< HEAD
   //   addHijoAPI(nuevoHijo:Hijo):Observable<Hijo>{
   //     const options={
   //       headers:{
@@ -49,3 +50,8 @@ export class PadreService {
 
   //     return this._http.post<Pedido>(this.API_URL,pedidoAEnviar,options);
 }
+=======
+//     return this._http.post<Pedido>(this.API_URL,pedidoAEnviar,options);
+//   }
+}}
+>>>>>>> f6bc89277dab58c1d36f716f471d184a45e7d89b

@@ -1,8 +1,8 @@
 export class Congelar { 
 
     constructor(private _cid: number,
-        private _fechainicio: number,
-        private _fechafin: number,
+        private _fechainicio: String,
+        private _fechafin: String,
         private _pid: number,
         private _hid: number,
         ){
