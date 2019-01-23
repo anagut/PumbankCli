@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hijo } from '../models/Hijo';
+import { PadreService } from '../services/padre.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-padre',
@@ -8,6 +10,7 @@ import { Hijo } from '../models/Hijo';
 })
 export class PadreComponent implements OnInit {
 
+<<<<<<< HEAD
   // hijos:Hijo[] = [
   //   new Hijo(1, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),
   //   new Hijo(2, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),];
@@ -28,7 +31,27 @@ export class PadreComponent implements OnInit {
   //     return this.usuarios;
   //   }
   // }
+=======
+  _hijos: Hijo[];
+  pid: number = 0;
 
+  constructor(private route: ActivatedRoute, private _padreService: PadreService) { }
+
+  // ngOnInit() {
+  //   this._hijos = this._padreService.getHijos();
+  //   this.route.params.subscribe(params => {
+  //     console.log('params', params);
+  //     this.pid = params['pid'];
+  //   });
+  // }
+
+  ngOnInit() {
+    this._padreService.getHijosByPidFromAPI(1).subscribe(hijosApi => {
+      console.log('hijosApi:',hijosApi);
+      this._hijos=hijosApi.hijos;
+    });
+  }
+>>>>>>> 43887dc5574c791e0a64e20e498b134069375877
 
 }
 }
