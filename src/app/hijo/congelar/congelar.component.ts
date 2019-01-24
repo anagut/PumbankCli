@@ -1,46 +1,38 @@
-// import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { Congelar } from 'src/app/models/Congelar';
-// import { ActivatedRoute } from '@angular/router';
-// import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Congelar } from 'src/app/models/Congelar';
+import { ActivatedRoute } from '@angular/router';
+import { CongelarService } from 'src/app/services/congelar.service';
 
 
-// @Component({
-//   selector: 'app-congelar',
-//   templateUrl: './congelar.component.html',
-//   styleUrls: ['./congelar.component.scss']
-// })
-// export class CongelarComponent implements OnInit {
-//   private nuevoCongelar: Congelar = new Congelar(0, '00/00/0000', '00/00/0000', 0, 0);
+@Component({
+  selector: 'app-congelar',
+  templateUrl: './congelar.component.html',
+  styleUrls: ['./congelar.component.scss']
+})
+export class CongelarComponent implements OnInit {
+  private _congelar = new Congelar(0, '00/00/0000', '00/00/0000', 0, 0);
+  constructor(private route: ActivatedRoute, private _congelarService: CongelarService) { }
 
-//   constructor(private route: ActivatedRoute, private _congelarService) { 
+  ngOnInit() {
 
-//   private hid: number = 0;
-//   private congelado: Congelar= new Congelar(0,'','',0,0);
-
-//   ngOnInit() {
-
-//     this.route.params.subscribe(params => {
-//       this.hid = params['hid'];
-//       this.congelado.hid=this._congelarService.getCongelarByHid();
-//     });
-
-   
-
-//   }
+    this.route.params.subscribe(params => {
+      let hid = params['hid'];
+      let pid = params['pid'];
+      this._congelarService.getCongelarFromAPI(pid, hid).subscribe(congelado => {
+        this._congelar = congelado;
+      });
+    });
+  }
 
 
-//       this.route.params.subscribe(params => {
-//         let cid = params['cid'];
-//         this._congelarService.getCongelarFromAPI(cid).subscribe(Congelado => {
-//           this.nuevoCongelar = Congelado;
-//         });
-//       });
-//   }
+  //contraseña: Pumbank2019!  username: root-->todo de la RDS
 
-//   addCongelar() {
-//     this._congelarService.addCongelarAPI(this.nuevoCongelar).subscribe(congelarRec => {
-//       this.nuevoCongelar = congelarRec;
-//     });
-//   }
+  addCongelar() {
+    this._congelarService.addCongelarAPI(this._congelar).subscribe(congelarRec => {
+      this._congelar = congelarRec;
+    });
 
-// }
+  }
+
+
+}

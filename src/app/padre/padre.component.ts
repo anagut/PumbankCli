@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class PadreComponent implements OnInit {
   _hijos: Hijo[];
-  _padre: Padre[];
+  _padre: Padre;
   pid: number = 0;
 
   constructor(private route: ActivatedRoute, private _padreService: PadreService) { }
@@ -24,9 +24,13 @@ export class PadreComponent implements OnInit {
       this.pid = params['pid'];
       console.log(this.pid);
 
+      
+
       this._padreService.getHijosByPidFromAPI(this.pid).subscribe(padreApi => {
         console.log('padreApi:', padreApi);
-        this._hijos = padreApi.hijos;
+        this._padre=padreApi;
+        this._hijos = padreApi.hijos;        
+
       });
     });
   }
