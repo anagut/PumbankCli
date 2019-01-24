@@ -25,15 +25,15 @@ export class PadreService {
   //   return this._hijos;
   // }
 
-  getHijosByPidFromAPI(pid: number): Observable<Hijo[]> {
+  getHijosByPidFromAPI(pid: number): Observable<Padre> {
     console.log('Padre con pid:', pid);
-    return this._http.get<Hijo[]>(`${this.API_URL}/${pid}`);
+    return this._http.get<Padre>(`${this.API_URL}/${pid}`);
   }
 
-  //   addHijo(nuevoH: Hijo):Boolean{
-  //     nuevoH.hid = (new Number());
-  //     this._http.put(nuevoH);
-  //     return true;
+  // addHijoToAPI(nuevoH: Hijo):Boolean{
+  //   nuevoH.hid = (new Number());
+  //   this._http.put(nuevoH);
+  //   return true;
 
-  //   
+  // }  
 }
