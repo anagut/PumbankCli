@@ -1,15 +1,39 @@
-<!-- <section>
-  <h1>Congelado</h1>
-  <form #userform="ngForm" (ngSubmit)="addPedido()">
-    <div>
-      <input [(ngModel)]="nuevoCongelar.fechainicio" name="fechainicio" type="text"placeholder="fechainicio" required>
-    </div>
-    <div>
-      <input [(ngModel)]="nuevoCongelar.fechafinal" name="fechafinal" type="text"placeholder="fechafinal" required>
-    </div>
-   
-    <div><button [disabled]="!userform.valid">Crear</button></div>
-  </form>
+<h1>Congelar</h1>
+<section>
 
-  <pre>{{nuevoCongelar|json}}</pre>
-</section> -->
+  <div *ngIf="_congelar.hid != 0">
+      <form #form_congelarexistente="ngForm" (ngSubmit)="onSubmit(form_congelarexistente)">
+          <div>
+              <label for="fechainicio">Fecha de inicio:</label>
+              <input type="fechainicio" name="fechainicio" id="fechainicio" [(ngModel)]="_congelar.fechainicio" required>
+          </div>
+          <div>
+            <label for="fechafin">Fecha de finalización:</label>
+            <input type="fechafin" name="fechafin" id="fechafin" [(ngModel)]="_congelar.fechafin" required>
+        </div>
+          <div>
+              <div><button class="btn" [disabled]="!form_congelarexistente.valid">Aceptar</button></div>
+              <div><button class="btn">Cancelar</button></div>
+          </div>
+      </form>
+  </div>
+
+  <div *ngIf="_congelar.hid == 0">
+      <form #form_nuevacongelar="ngForm" (ngSubmit)="onSubmit(form_nuevacongelar)">
+          <div>
+              <label for="fechainicio">Fecha de inicio:</label>
+              <input type="fechainicio" name="fechainicio" id="fechainicio" (ngModel)="_congelar.fechainicio" required>
+          </div>
+          <div>
+            <label for="fechafin">Fecha de finalización:</label>
+            <input type="fechafin" name="fechafin" id="fechafin" (ngModel)="_congelar.fechafin" required>
+        </div>
+          <div>
+              <div><button class="btn" [disabled]="!form_nuevacongelar">Aceptar</button></div>
+              <div><button class="btn">Cancelar</button></div>
+          </div>
+      </form>
+  </div>
+
+
+</section>
