@@ -15,8 +15,8 @@ const routes: Routes = [
   {path:"", redirectTo:"a", pathMatch:"full"},
 
   {path:"padre/:pid", component:PadreComponent, pathMatch:"full"},
-  {path:"padre/:pid/:hid", component:HijoComponent, pathMatch:"full"},
   {path:"padre/:pid/add-hijo", component:AddHijoComponent, pathMatch:"full"},
+  {path:"padre/:pid/:hid", component:HijoComponent, pathMatch:"full"},
   {path:"padre/:pid/:hid/paga", component:PagaComponent, pathMatch:"full"},
   {path:"padre/:pid/:hid/transferencia", component:TransferenciaComponent, pathMatch:"full"},
   {path:"padre/:pid/:hid/congelar", component:CongelarComponent, pathMatch:"full"},
