@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Paga } from '../models/Paga';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Hijo } from '../models/Hijo';
+import {  HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PagaService {
 
+  API_URL_PAGAS: 'http://localhost:8080/Pumbank/api/pagas';
   API_URL: 'http://localhost:8080/Pumbank/api/pagas'
 
   // private _pagas : Paga[];
@@ -38,5 +40,25 @@ export class PagaService {
   getPagaByHid(hidbusc: Number):Paga{
     return(this._pagas.filter(paga => paga.hid == hidbusc)[0]);
   }
+
+  addPagaToAPI(paga:Paga):Observable<any>{
+    const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
+			})
+    };
+    console.log('Paga',paga);
+
+    return this._http.post(`${this.API_URL}/${paga.pid}/${paga.hid}/paga`, paga, httpOptions).pipe(
+      tap(data => this._pagas = [...this._pagas, paga]),
+      catchError(this.handleError)
+    )
+  }
+
+  private handleError(error) {
+		console.error('handleError:',error);
+		return throwError(error || 'Server error');
+	}
+
 
 }
