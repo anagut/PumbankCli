@@ -21,9 +21,9 @@ export class PadreComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log('params', params);
-      let pid = params['pid'];
+      this.pid = params['pid'];
 
-      this._padreService.getHijosByPidFromAPI(pid).subscribe(padreApi => {
+      this._padreService.getHijosByPidFromAPI(this.pid).subscribe(padreApi => {
         console.log('padreApi:', padreApi);
         this._hijos = padreApi.hijos;
       });

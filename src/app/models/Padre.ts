@@ -1,3 +1,5 @@
+import { Hijo } from './Hijo';
+
 export class Padre {
 
     constructor(private _pid: number, 
@@ -10,7 +12,7 @@ export class Padre {
         private _password: string,
         private _expiremonth: number,
         private _expireyear: number,
-        private _hijos: string[]) {
+        private _hijos: Hijo[]) {
     }
 
     get pid() {return this._pid;}
