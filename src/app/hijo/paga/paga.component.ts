@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Hijo } from 'src/app/models/Hijo';
 import { Paga } from 'src/app/models/Paga';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-paga',
@@ -20,9 +22,10 @@ export class PagaComponent implements OnInit {
   _hijo: Hijo = new Hijo(0, '', '', '', 0, '', '');
   _paga: Paga = new Paga(0, 0, 0, 0, 0);
 
+  // pagas: Paga[];
 
   pid: number = 1;
-  hid: number = 3;
+  hid: number = 1;
 
   serverError: string;
 
@@ -33,12 +36,26 @@ export class PagaComponent implements OnInit {
     //     this.pid = params['pid'];
     // });
 
-    if (this._PagaService.getPagaByHid(this.hid) != null) {
-      this._paga = this._PagaService.getPagaByHid(this.hid)
-    } else {
-      this._paga.pid = this.pid;
-      this._paga.hid = this.hid;
-    }
+    // this._PagaService.getPagasFromApi().subscribe(
+    //   (pagasfromapi: Paga[]) => {this.pagas = pagasfromapi;},
+    //   error => { console.log('Error en traer datos:', error); }
+    // );
+
+    this._paga =  this._PagaService.getPagaByHidFromAPI(this.hid, this.pid);
+
+    // this._PagaService.getPagaByHidFromAPI(this.hid, this.pid).subscribe(
+    //   data => { this._paga = data;},
+    //     error=>{console.log('Error on receiving para');}
+    // )
+      console.log("la paga al final del método",this._paga);
+
+
+    // if (this._PagaService.getPagaByHid(this.hid) != null) {
+    //   this._paga = this._PagaService.getPagaByHid(this.hid)
+    // } else {
+    //   this._paga.pid = this.pid;
+    //   this._paga.hid = this.hid;
+    // }
 
     this._hijo = this._PagaService.getHijoByHid(this.hid);
 

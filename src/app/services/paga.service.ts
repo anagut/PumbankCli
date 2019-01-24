@@ -11,15 +11,17 @@ import { Observable, throwError } from 'rxjs';
 export class PagaService {
 
   API_URL_PAGAS: 'http://localhost:8080/Pumbank/api/pagas';
-  API_URL: 'http://localhost:8080/Pumbank/api/pagas'
+  API_URL: 'http://localhost:8080/Pumbank/api/'
+ 
 
-  // private _pagas : Paga[];
+  private _pagas : Paga[];
+  private _paga : Paga[];
 
-  private _pagas: Paga[] = [
-    new Paga (1, 10, 7, 1, 1),
-    new Paga (2, 20, 15, 1, 2)
+  // private _pagas: Paga[] = [
+  //   new Paga (1, 10, 7, 1, 1),
+  //   new Paga (2, 20, 15, 1, 2)
 
-  ]
+  // ]
 
   private _hijos: Hijo[] = [
     new Hijo (1, "Pepe", "Pérez", "10-10-10", 50, "p@p.es", "ppp"),
@@ -33,11 +35,32 @@ export class PagaService {
     return this._pagas;
   }
 
+  getPagasFromApi():Observable<Paga[]>{
+		return this._http.get<Paga[]>(this.API_URL_PAGAS)
+		.pipe(
+			tap(data =>this._pagas=data),
+			catchError(this.handleError)
+		);
+  }
+  
+  // getPagaByHidFromAPI(hid: number, pid: number):Observable<Paga> {
+	// 	return this._http.get<Paga>(`${this.API_URL}/padre/${pid}}/hijos/${hid}/paga`)
+	// 		.pipe(
+	// 			tap(data => this._paga = [data]),
+	// 			catchError(this.handleError)
+	// 		);
+  // }
+
+  getPagaByHidFromAPI(hid: number, pid: number):Observable<Paga[]>{
+    return this._http.get<Paga[]>(`${this.API_URL}/padre/${pid}}/hijos/${hid}/paga`);
+  }
+
   getHijoByHid(hid:number):Hijo{
     return (this._hijos.filter(hijo => hijo.hid == hid)[0]);
   }
 
   getPagaByHid(hidbusc: Number):Paga{
+    this.getPagasFromApi();
     return(this._pagas.filter(paga => paga.hid == hidbusc)[0]);
   }
 

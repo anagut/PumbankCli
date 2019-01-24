@@ -51,6 +51,7 @@ export class PadreComponent implements OnInit {
     this.route.params.subscribe(params => {
       console.log('params', params);
       this.pid = params['pid'];
+      console.log(this.pid);
 
       this._padreService.getHijosByPidFromAPI(this.pid).subscribe(hijosApi => {
         console.log('hijosApi:', hijosApi);
