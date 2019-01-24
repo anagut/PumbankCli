@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hijo } from '../models/Hijo';
+import { Padre } from '../models/Padre';
 import { PadreService } from '../services/padre.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,42 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class PadreComponent implements OnInit {
-
-
-  //   hijos:Hijo[] = [
-  //     new Hijo(1, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),
-  //     new Hijo(2, "Ricardo Jr", "Rodriguez", "2005-06-17", 105.6, "rjr@r.es", "rrrr"),];
-  //   valor:string='';
-
-  //   constructor(private _hijoService:HijoService) { }
-
-  //  ngOnInit() {
-  //     this.hijos=this._hijoService;
-  //   }
-
-  //   filtraPorNombre(){
-  //     if(this.usuarios){
-  //       return this.usuarios.filter(unU=>{
-  //         return (unU.nombre.indexOf(this.valor)>=0);
-  //       });
-  //     }else{
-  //       return this.usuarios;
-  //     }
-  //  }
-
-
   _hijos: Hijo[];
+  _padre: Padre[];
   pid: number = 0;
 
   constructor(private route: ActivatedRoute, private _padreService: PadreService) { }
 
-  // ngOnInit() {
-  //   this._hijos = this._padreService.getHijos();
-  //   this.route.params.subscribe(params => {
-  //     console.log('params', params);
-  //     this.pid = params['pid'];
-  //   });
-  // }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -53,9 +24,9 @@ export class PadreComponent implements OnInit {
       this.pid = params['pid'];
       console.log(this.pid);
 
-      this._padreService.getHijosByPidFromAPI(this.pid).subscribe(hijosApi => {
-        console.log('hijosApi:', hijosApi);
-        this._hijos = hijosApi;
+      this._padreService.getHijosByPidFromAPI(this.pid).subscribe(padreApi => {
+        console.log('padreApi:', padreApi);
+        this._hijos = padreApi.hijos;
       });
     });
   }

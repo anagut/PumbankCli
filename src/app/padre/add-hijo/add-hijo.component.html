@@ -1,3 +1,18 @@
-<p>
-  add-hijo works!
-</p>
+<section>
+  <h1>Añadir Hijo</h1>
+  <form #addHijoForm='ngForm' (ngSubmit)="addHijo()">
+    <div><input name="nombre" [ngModel]="nuevoHijo.nombre" type="text" placeholder="Nombre" required></div>
+    <div><input name="apellidos" [ngModel]="nuevoHijo.apellidos" type="text" placeholder="Apellidos" required></div>
+    <div><input name="fechanacimiento" [ngModel]="nuevoHijo.fechanacimiento" type="datetime" required></div>
+    <div><input name="saldo" [ngModel]="nuevoHijo.saldo" type="text" placeholder="Saldo" required></div>
+    <div><input name="email" [ngModel]="nuevoHijo.email" type="email" placeholder="Email" required></div>
+    <div><input name="email" [ngModel]="nuevoHijo.email" type="email" placeholder="Repetir Email" required></div>
+    <div><input name="password" [ngModel]="nuevoHijo.password" type="password" placeholder="Contraseña" required></div>
+    <div><input name="password" [ngModel]="nuevoHijo.password" type="password" placeholder="Repetir Contraseña" required></div>
+    <div><button [disabled]="!pedidoForm.valid">Crear Hijo</button></div>
+ 
+    <pre>{{nuevoHijo|json}}</pre>
+ 
+  </form>
+
+</section>
