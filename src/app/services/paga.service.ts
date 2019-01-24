@@ -10,8 +10,9 @@ import { Observable, throwError } from 'rxjs';
 })
 export class PagaService {
 
-  API_URL_PAGAS: 'http://localhost:8080/Pumbank/api/pagas';
-  API_URL: 'http://localhost:8080/Pumbank/api/'
+  API_URL_PAGAS= 'http://ec2-34-243-169-174.eu-west-1.compute.amazonaws.com:8080/Pumbank/api/pagas';
+  API_URL= 'http://ec2-34-243-169-174.eu-west-1.compute.amazonaws.com:8080/Pumbank/api';
+  
  
 
   private _pagas : Paga[];
@@ -31,17 +32,17 @@ export class PagaService {
 
    constructor(private _http: HttpClient) { }
 
-  getListaPagas(){
-    return this._pagas;
-  }
+  // getListaPagas(){
+  //   return this._pagas;
+  // }
 
-  getPagasFromApi():Observable<Paga[]>{
-		return this._http.get<Paga[]>(this.API_URL_PAGAS)
-		.pipe(
-			tap(data =>this._pagas=data),
-			catchError(this.handleError)
-		);
-  }
+  // getPagasFromApi():Observable<Paga[]>{
+	// 	return this._http.get<Paga[]>(this.API_URL_PAGAS)
+	// 	.pipe(
+	// 		tap(data =>this._pagas=data),
+	// 		catchError(this.handleError)
+	// 	);
+  // }
   
   // getPagaByHidFromAPI(hid: number, pid: number):Observable<Paga> {
 	// 	return this._http.get<Paga>(`${this.API_URL}/padre/${pid}}/hijos/${hid}/paga`)
@@ -51,37 +52,37 @@ export class PagaService {
 	// 		);
   // }
 
-  getPagaByHidFromAPI(hid: number, pid: number):Observable<Paga[]>{
-    return this._http.get<Paga[]>(`${this.API_URL}/padre/${pid}}/hijos/${hid}/paga`);
+  getPagaByHidFromAPI(hid: number, pid: number): Observable<Paga>{
+    return this._http.get<Paga>(`${this.API_URL}/padre/${pid}/hijos/${hid}/paga`);
   }
 
   getHijoByHid(hid:number):Hijo{
     return (this._hijos.filter(hijo => hijo.hid == hid)[0]);
   }
 
-  getPagaByHid(hidbusc: Number):Paga{
-    this.getPagasFromApi();
-    return(this._pagas.filter(paga => paga.hid == hidbusc)[0]);
-  }
+  // getPagaByHid(hidbusc: Number):Paga{
+  //   this.getPagasFromApi();
+  //   return(this._pagas.filter(paga => paga.hid == hidbusc)[0]);
+  // }
 
-  addPagaToAPI(paga:Paga):Observable<any>{
-    const httpOptions = {
-			headers: new HttpHeaders({
-				'Content-Type': 'application/json'
-			})
-    };
-    console.log('Paga',paga);
+  // addPagaToAPI(paga:Paga):Observable<any>{
+  //   const httpOptions = {
+	// 		headers: new HttpHeaders({
+	// 			'Content-Type': 'application/json'
+	// 		})
+  //   };
+  //   console.log('Paga',paga);
 
-    return this._http.post(`${this.API_URL}/${paga.pid}/${paga.hid}/paga`, paga, httpOptions).pipe(
-      tap(data => this._pagas = [...this._pagas, paga]),
-      catchError(this.handleError)
-    )
-  }
+  //   return this._http.post(`${this.API_URL}/${paga.pid}/${paga.hid}/paga`, paga, httpOptions).pipe(
+  //     tap(data => this._pagas = [...this._pagas, paga]),
+  //     catchError(this.handleError)
+  //   )
+  // }
 
-  private handleError(error) {
-		console.error('handleError:',error);
-		return throwError(error || 'Server error');
-	}
+  // private handleError(error) {
+	// 	console.error('handleError:',error);
+	// 	return throwError(error || 'Server error');
+	// }
 
 
 }

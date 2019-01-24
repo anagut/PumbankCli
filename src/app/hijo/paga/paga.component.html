@@ -13,7 +13,7 @@
             </div>
             <div>
                 <label for="frecuenciadias">Frecuencia</label>
-                <div *ngIf='_paga.frecuenciadias == 7'>
+                <div *ngIf='_paga.frecuencia == 7'>
                     <select name="frecuenciadias" id="frecuenciadias" required>
                         <option [ngValue]="0" disabled>Elegir frecuencia</option>
                         <option [ngValue]="7" selected>Cada semana</option>
@@ -22,7 +22,7 @@
                         <option [ngValue]="1">Cada día</option>
                     </select>
                 </div>
-                <div *ngIf="_paga.frecuenciadias==15">
+                <div *ngIf="_paga.frecuencia == 15">
                     <select name="frecuenciadias" id="frecuenciadias" required>
                         <option [ngValue]="0" disabled>Elegir frecuencia</option>
                         <option [ngValue]="7">Cada semana</option>
@@ -31,7 +31,7 @@
                         <option [ngValue]="1">Cada día</option>
                     </select>
                 </div>
-                <div *ngIf="_paga.frecuenciadias==30">
+                <div *ngIf="_paga.frecuencia == 30">
                     <select name="frecuenciadias" id="frecuenciadias" required>
                         <option [ngValue]="0" disabled>Elegir frecuencia</option>
                         <option [ngValue]="7">Cada semana</option>
@@ -40,7 +40,7 @@
                         <option [ngValue]="1">Cada día</option>
                     </select>
                 </div>
-                <div *ngIf="_paga.frecuenciadias==1">
+                <div *ngIf="_paga.frecuencia == 1">
                     <select name="frecuenciadias" id="frecuenciadias" required>
                         <option [ngValue]="0" disabled>Elegir frecuencia</option>
                         <option [ngValue]="7">Cada semana</option>

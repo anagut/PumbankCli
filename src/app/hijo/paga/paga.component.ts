@@ -20,35 +20,40 @@ export class PagaComponent implements OnInit {
   form_nuevapaga: FormGroup;
 
   _hijo: Hijo = new Hijo(0, '', '', '', 0, '', '');
-  _paga: Paga = new Paga(0, 0, 0, 0, 0);
+  _paga: Paga= new Paga (0,0,0,0,0);
 
   // pagas: Paga[];
 
-  pid: number = 1;
-  hid: number = 1;
+  pid: number = 0;
+  hid: number = 0;
 
   serverError: string;
 
   ngOnInit() {
-    //   this.route.params.subscribe(params => {
-    //     console.log('params',params);
-    //     this.hid = params['hid'];
-    //     this.pid = params['pid'];
-    // });
+    this.route.params.subscribe(params => {
+      this.pid = params['pid'];
+      console.log('pid', this.pid);
+      this.hid = params['hid'];
+      console.log('hid', this.hid);
+
+      this._PagaService.getPagaByHidFromAPI(this.hid, this.pid).subscribe(
+        data => {
+        this._paga = data;
+          console.log("la paga que coge de la api", this._paga);
+        })
+
+      this._hijo = this._PagaService.getHijoByHid(this.hid);
+      
+    });
+
+
 
     // this._PagaService.getPagasFromApi().subscribe(
     //   (pagasfromapi: Paga[]) => {this.pagas = pagasfromapi;},
     //   error => { console.log('Error en traer datos:', error); }
     // );
 
-    this._paga =  this._PagaService.getPagaByHidFromAPI(this.hid, this.pid);
-
-    // this._PagaService.getPagaByHidFromAPI(this.hid, this.pid).subscribe(
-    //   data => { this._paga = data;},
-    //     error=>{console.log('Error on receiving para');}
-    // )
-      console.log("la paga al final del método",this._paga);
-
+    // this._paga =  this._PagaService.getPagaByHidFromAPI(this.hid, this.pid);
 
     // if (this._PagaService.getPagaByHid(this.hid) != null) {
     //   this._paga = this._PagaService.getPagaByHid(this.hid)
@@ -57,25 +62,22 @@ export class PagaComponent implements OnInit {
     //   this._paga.hid = this.hid;
     // }
 
-    this._hijo = this._PagaService.getHijoByHid(this.hid);
-
-    console.log(this._paga);
   }
 
-  onSubmit(form_nuevapaga: NgForm) {
-    console.log('Formulario:', form_nuevapaga);
-    if (!form_nuevapaga.valid) {
-      return;
-    } else {
-      this._PagaService.addPagaToAPI(this._paga).subscribe(
-        data => {
-          this._router.navigate(['padre/:pid/:hid']);
-        },
-        error => {
-          this.serverError = 'Ooops ha habido un error...por favor inténtalo nuevamente';
-        }
-      )
-    }
-  }
+  // onSubmit(form_nuevapaga: NgForm) {
+  //   console.log('Formulario:', form_nuevapaga);
+  //   if (!form_nuevapaga.valid) {
+  //     return;
+  //   } else {
+  //     this._PagaService.addPagaToAPI(this._paga).subscribe(
+  //       data => {
+  //         this._router.navigate(['padre/:pid/:hid']);
+  //       },
+  //       error => {
+  //         this.serverError = 'Ooops ha habido un error...por favor inténtalo nuevamente';
+  //       }
+  //     )
+  //   }
+  // }
 
 }
